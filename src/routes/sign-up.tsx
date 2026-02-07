@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "../shared/components/ui/Button";
-import { useSignUp } from "../features/sign-up/hooks/useSignUp";
+import { useSignUp } from "../features/sign-up/hooks/use-sign-up";
+import { InputPassword } from "../shared/components/ui/InputPassword";
 
 export const Route = createFileRoute("/sign-up")({
   component: RouteComponent,
@@ -15,7 +16,7 @@ function RouteComponent() {
         <h2 className="text-center mb-4">
           <b>Create An Account</b>
         </h2>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-4 p-12" onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -27,12 +28,13 @@ function RouteComponent() {
           />
 
           <label htmlFor="password">Password</label>
-          <input
+          <InputPassword
             type="password"
             id="password"
             name="password"
             required
-            className="p-1 border-2 rounded-md"
+            className="relative p-1 border-2 rounded-md w-full"
+            iconProps={"absolute size-6 right-2 top-1/2 -translate-y-1/2"}
             onChange={handleChange}
           />
 
@@ -42,7 +44,7 @@ function RouteComponent() {
 
           <Button
             type="submit"
-            className="bg-black text-white p-2 rounded-md disabled:opacity-50"
+            className="bg-black text-white p-2 rounded-md"
             disabled={isPending}
           >
             Sign Up

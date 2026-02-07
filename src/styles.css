@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+button:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+}
+
+button:hover {
+  cursor: pointer;
+}
