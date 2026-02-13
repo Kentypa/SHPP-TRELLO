@@ -7,16 +7,17 @@ import { useModal } from "../../../shared/hooks/use-modal";
 import { boardKeys } from "../../../shared/keys/board";
 import { boardService } from "../../../shared/services/board-service";
 import { useCustomProperties } from "./use-custom-properties";
+import { useState } from "react";
 
-export const useBoardForm = (initialData?: BoardData) => {
-  const isEdit = !!initialData;
+export const useBoardForm = () => {
+  const [activeId, setActiveId] = useState<number | null>(null);
   const { showModal, toggleModal } = useModal();
   const queryClient = useQueryClient();
 
   const { mutate: submitBoard } = useMutation({
     mutationFn: (payload: UpdateBoardPayload | AddBoardPayload) =>
-      isEdit
-        ? boardService.updateBoard(initialData.id, payload)
+      activeId
+        ? boardService.updateBoard(activeId, payload)
         : boardService.addBoard(payload as AddBoardPayload),
     onSuccess: () => {
       queryClient.invalidateQueries(boardKeys.all);
@@ -24,38 +25,45 @@ export const useBoardForm = (initialData?: BoardData) => {
     },
   });
 
-  const { formState, handleChange, handleSubmit, handleChangeByValue } =
-    useForm<UpdateBoardPayload>(
-      { title: initialData?.title || "", custom: initialData?.custom },
-      submitBoard,
-    );
+  const {
+    formState,
+    handleChange,
+    handleSubmit,
+    handleChangeByValue,
+    handleSetFormState,
+  } = useForm<UpdateBoardPayload>({ title: "", custom: {} }, submitBoard);
 
   const { fields, add, remove, update, reset, setInitial } =
-    useCustomProperties((customData) => {
-      handleChangeByValue("custom", customData);
-    });
+    useCustomProperties((customData) =>
+      handleChangeByValue("custom", customData),
+    );
 
-  const handleOpen = () => {
-    if (isEdit) setInitial(initialData.custom);
-    toggleModal();
-  };
-
-  const handleClose = () => {
-    if (!isEdit) {
+  const open = (board?: BoardData) => {
+    if (board) {
+      setActiveId(board.id);
+      handleSetFormState({ title: board.title, custom: board.custom });
+      setInitial(board.custom);
+    } else {
+      setActiveId(null);
       reset();
-      handleChangeByValue("title", "");
+      handleSetFormState({ title: "", custom: {} });
     }
     toggleModal();
   };
 
+  const handleClose = () => {
+    toggleModal();
+    setTimeout(() => {
+      setActiveId(null);
+      handleSetFormState({ title: "", custom: {} });
+      reset();
+    }, 200);
+  };
+
   return {
-    modal: {
-      showModal,
-      toggleModal: isEdit ? handleOpen : handleClose,
-      close: handleClose,
-    },
+    modal: { showModal, open, close: handleClose },
     form: { formState, handleChange, handleSubmit },
     properties: { fields, add, remove, update },
-    isEdit,
+    isEdit: !!activeId,
   };
 };

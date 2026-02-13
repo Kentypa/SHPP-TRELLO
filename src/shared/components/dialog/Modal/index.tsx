@@ -4,20 +4,20 @@ import type { ComponentWithChildren } from "../../../types/component-with-childr
 type ModalProps = {
   visible: boolean;
   toggleModal: () => void;
-  backgroundClassName: string;
+  className: string;
 };
 
 export const Modal: ComponentWithChildren<ModalProps> = ({
   visible,
-  backgroundClassName,
   children,
+  className,
   toggleModal,
 }) => {
   return (
     <>
       {visible &&
         createPortal(
-          <div className={backgroundClassName} onClick={toggleModal}>
+          <div className={className} onClick={toggleModal}>
             <div className="contents" onClick={(e) => e.stopPropagation()}>
               {children}
             </div>

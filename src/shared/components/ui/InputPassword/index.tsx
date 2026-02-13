@@ -4,11 +4,11 @@ import Eye from "../../../../assets/icons/eye.svg?react";
 import EyeClosed from "../../../../assets/icons/eye-crossed.svg?react";
 
 type InputPasswordProps = InputHTMLAttributes<HTMLInputElement> & {
-  iconProps: string;
+  iconClassName: string;
 };
 
 export const InputPassword: FC<InputPasswordProps> = ({
-  iconProps,
+  iconClassName,
   ...props
 }) => {
   const [show, setShow] = useState(false);
@@ -18,7 +18,7 @@ export const InputPassword: FC<InputPasswordProps> = ({
     <div className="flex relative">
       <input {...props} type={show ? "text" : "password"} />
       <Button type="button" onClick={() => setShow((prev) => !prev)}>
-        <EyeIcon className={iconProps} />
+        <EyeIcon className={iconClassName} />
       </Button>
     </div>
   );

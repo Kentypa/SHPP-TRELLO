@@ -3,8 +3,8 @@ import { boardService } from "../services/board-service";
 
 export const boardKeys = createQueryKeys("boards", {
   all: { queryKey: null, queryFn: () => boardService.getBoards() },
-  detail: (id: string) => ({
+  detail: (id: number) => ({
     queryKey: [id],
-    // queryFn: () => boardService.getBoardById(id),
+    queryFn: () => boardService.getBoardById(id),
   }),
 });

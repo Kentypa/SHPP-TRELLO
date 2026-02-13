@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --size-text: 1em;
+}
+
 button:disabled {
   opacity: 50%;
   cursor: not-allowed;

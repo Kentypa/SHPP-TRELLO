@@ -34,11 +34,11 @@ function RouteComponent() {
             name="password"
             required
             className="relative p-1 border-2 rounded-md w-full"
-            iconProps={"absolute size-6 right-2 top-1/2 -translate-y-1/2"}
+            iconClassName={"absolute size-6 right-2 top-1/2 -translate-y-1/2"}
             onChange={handleChange}
           />
 
-          <Link to="/sign-in" className="text-right">
+          <Link to="/sign-in" search={{ redirect: "" }} className="text-right">
             Already have account?
           </Link>
 

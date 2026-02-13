@@ -5,6 +5,9 @@ import { useSignIn } from "../features/sign-in/hooks/use-sign-in";
 
 export const Route = createFileRoute("/sign-in")({
   component: RouteComponent,
+  validateSearch: (search: Record<string, unknown>) => ({
+    redirect: (search.redirect as string) || "/",
+  }),
 });
 
 function RouteComponent() {
@@ -34,7 +37,7 @@ function RouteComponent() {
             name="password"
             required
             className="relative p-1 border-2 rounded-md w-full"
-            iconProps={"absolute size-6 right-2 top-1/2 -translate-y-1/2"}
+            iconClassName={"absolute size-6 right-2 top-1/2 -translate-y-1/2"}
             onChange={handleChange}
           />
 

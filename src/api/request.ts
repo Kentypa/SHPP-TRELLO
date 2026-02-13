@@ -1,5 +1,11 @@
-import axios, { AxiosError, type InternalAxiosRequestConfig } from "axios";
+import axios, {
+  AxiosError,
+  type AxiosResponse,
+  type InternalAxiosRequestConfig,
+} from "axios";
 import api from "../config/api";
+import { logout } from "../store/slices/authorization-slice";
+import { store } from "../store/store";
 
 export const instance = axios.create({
   baseURL: api.baseURL,
@@ -7,9 +13,9 @@ export const instance = axios.create({
 
 let refreshPromise: Promise<string | null> | null = null;
 
-const logout = () => {
+const handleUnauthorized = () => {
   localStorage.clear();
-  window.location.href = "/sign-in";
+  store.dispatch(logout());
 };
 
 instance.interceptors.request.use((config) => {
@@ -30,12 +36,17 @@ instance.interceptors.response.use(
     }
 
     config._retry = true;
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (!refreshToken) {
+      handleUnauthorized();
+      return Promise.reject(error);
+    }
 
     if (!refreshPromise) {
       refreshPromise = (async () => {
         try {
-          const refreshToken = localStorage.getItem("refreshToken");
-          const { data } = await axios.post<{ token: string }>(
+          const { data } = await axios.post<AxiosResponse<{ token: string }>>(
             `${api.baseURL}/refresh`,
             { refreshToken },
           );
@@ -43,7 +54,7 @@ instance.interceptors.response.use(
           localStorage.setItem("token", data.token);
           return data.token;
         } catch {
-          logout();
+          handleUnauthorized();
           return null;
         } finally {
           refreshPromise = null;
@@ -51,11 +62,10 @@ instance.interceptors.response.use(
       })();
     }
 
-    const token = await refreshPromise;
+    const newToken = await refreshPromise;
+    if (!newToken) return Promise.reject(error);
 
-    if (!token) return Promise.reject(error);
-
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${newToken}`;
     return instance(config);
   },
 );

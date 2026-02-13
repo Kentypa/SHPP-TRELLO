@@ -1,19 +1,17 @@
 import type { FC } from "react";
 import type { useBoardForm } from "../../hooks/use-board-form";
-import { Modal } from "../../../../shared/components/features/Modal";
+import { Modal } from "../../../../shared/components/dialog/Modal";
 import { Button } from "../../../../shared/components/ui/Button";
 import { CustomPropertyItem } from "../CustomPropertyItem";
 
 export const BoardFormModal: FC<{
   controller: ReturnType<typeof useBoardForm>;
-}> = ({ controller }) => {
-  const { modal, form, properties, isEdit } = controller;
-
+}> = ({ controller: { form, isEdit, modal, properties } }) => {
   return (
     <Modal
       visible={modal.showModal}
       toggleModal={modal.close}
-      backgroundClassName={
+      className={
         "bg-[#000000aa] fixed inset-0 flex items-center justify-center"
       }
     >

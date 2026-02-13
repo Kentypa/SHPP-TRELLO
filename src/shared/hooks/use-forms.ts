@@ -11,6 +11,10 @@ export function useForm<T extends Record<string, unknown>>(
 ) {
   const [formState, setFormState] = useState<T>(initialState);
 
+  const handleSetFormState = (newState: T) => {
+    setFormState(newState);
+  };
+
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
@@ -40,5 +44,11 @@ export function useForm<T extends Record<string, unknown>>(
     [],
   );
 
-  return { formState, handleChange, handleChangeByValue, handleSubmit };
+  return {
+    formState,
+    handleChange,
+    handleChangeByValue,
+    handleSubmit,
+    handleSetFormState,
+  };
 }
