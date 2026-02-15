@@ -7,7 +7,7 @@ import { ListCreatorForm } from "./ListCreatorForm";
 
 export const ListCreator: FC = () => {
   const { lists } = useListContext();
-  const position = lists.length;
+  const position = Math.max(...lists.map((list) => list.position)) + 1;
 
   const [isOpen, setIsOpen] = useState(false);
   const { id } = useParams({ from: "/_authenticated/board/$id" });
