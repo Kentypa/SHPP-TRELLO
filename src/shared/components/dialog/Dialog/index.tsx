@@ -115,6 +115,7 @@ const Content = ({
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+    
   }, [isOpen, setIsOpen, triggerRef]);
 
   if (!isOpen) return null;

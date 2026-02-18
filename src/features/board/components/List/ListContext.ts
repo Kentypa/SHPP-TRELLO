@@ -3,7 +3,7 @@ import type { GetBoardDetailsResponse } from "../../types/get-board-details-resp
 
 export type ListType = GetBoardDetailsResponse["lists"][number];
 
-type ListContextType = {
+export type ListContextType = {
   lists: ListType[];
 };
 

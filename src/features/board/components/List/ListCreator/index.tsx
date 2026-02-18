@@ -4,10 +4,11 @@ import { useCreateList } from "../../../hooks/use-create-list";
 import { ListCreatorButton } from "./ListCreatorButton";
 import { useListContext } from "../ListContext";
 import { ListCreatorForm } from "./ListCreatorForm";
+import { calculateNewPosition } from "../../../../../shared/utils/calc-new-position";
 
 export const ListCreator: FC = () => {
   const { lists } = useListContext();
-  const position = Math.max(...lists.map((list) => list.position)) + 1;
+  const position = calculateNewPosition(lists);
 
   const [isOpen, setIsOpen] = useState(false);
   const { id } = useParams({ from: "/_authenticated/board/$id" });

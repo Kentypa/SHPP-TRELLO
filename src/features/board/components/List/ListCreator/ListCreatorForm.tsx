@@ -36,7 +36,7 @@ export const ListCreatorForm: FC<ListCreatorFormProps> = ({
         required
         onChange={handleChange}
         className="focus:border-blue-500 focus:outline-0 border-2 rounded-md p-1"
-        placeholder="Enter list title..."
+        placeholder="Enter list title"
       />
       <div className="flex items-center gap-6">
         <Button className="hover:text-blue-500">Add List</Button>

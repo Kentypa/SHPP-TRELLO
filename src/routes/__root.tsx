@@ -10,10 +10,10 @@ import { Button } from "../shared/components/ui/Button";
 import { useLogout } from "../shared/hooks/use-logout";
 import { useSelector } from "react-redux";
 import { authSelector } from "../store/selectors/auth-selector";
+import { useMemo } from "react";
 import MainPageIcon from "../assets/icons/apps.svg?react";
 import LoginIcon from "../assets/icons/enter.svg?react";
 import LogoutIcon from "../assets/icons/sign-out-alt.svg?react";
-import { useMemo } from "react";
 
 interface MyRouterContext {
   store: typeof store;

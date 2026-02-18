@@ -3,10 +3,7 @@ import type { AddListPayload } from "../../features/board/types/add-list-payload
 import type { DeleteListPayload } from "../../features/board/types/delete-list-payload";
 import type { UpdateListPayload } from "../../features/board/types/update-list-payload";
 import type { ResultResponse } from "../types/result-response";
-
-type BoardId = {
-  boardId: number;
-};
+import type { BoardId } from "../types/board-id";
 
 type CreateListParams = AddListPayload & BoardId;
 type DeleteListParams = DeleteListPayload & BoardId;
