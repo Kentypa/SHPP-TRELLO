@@ -11,9 +11,9 @@ export const CardItem: FC<GetCardResponse> = ({
   description,
 }) => {
   return (
-    <li className="flex justify-between p-3 bg-neutral-800 rounded-md fill-neutral-50 ">
+    <li className="flex justify-between p-3 bg-neutral-800 rounded-md fill-neutral-50">
       {title}
-      <Button>
+      <Button className="hover:fill-blue-500">
         <EditIcon className="size-text" />
       </Button>
     </li>
