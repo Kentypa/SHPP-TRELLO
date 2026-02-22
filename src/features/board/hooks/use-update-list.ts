@@ -1,11 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useParams } from "@tanstack/react-router";
 import { boardKeys } from "../../../shared/keys/board";
 import { listService } from "../../../shared/services/list-service";
 import type { UpdateListPayload } from "../types/update-list-payload";
+import { useBoardId } from "./use-board-id";
+import { toast } from "react-toastify";
 
 export const useUpdateList = () => {
-  const { id: boardId } = useParams({ from: "/_authenticated/board/$id" });
+  const { id: boardId } = useBoardId();
 
   const queryClient = useQueryClient();
 
@@ -16,6 +17,10 @@ export const useUpdateList = () => {
       queryClient.invalidateQueries({
         queryKey: boardKeys.detail(boardId).queryKey,
       });
+      toast.success("List updated");
+    },
+    onError: () => {
+      toast.error("Error at updating");
     },
   });
 };

@@ -6,6 +6,7 @@ import { authorizationKeys } from "../../../shared/keys/authorization";
 import { useDispatch } from "react-redux";
 import { login } from "../../../store/slices/authorization-slice";
 import { Route } from "../../../routes/sign-in";
+import { toast } from "react-toastify";
 
 export const useSignIn = () => {
   const { redirect: redirectUrl } = Route.useSearch();
@@ -27,7 +28,12 @@ export const useSignIn = () => {
 
       dispatch(login());
 
+      toast.success("Sign in success");
+
       navigate({ to: redirectUrl });
+    },
+    onError: () => {
+      toast.error("Sign in error");
     },
   });
 

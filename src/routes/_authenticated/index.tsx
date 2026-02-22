@@ -19,7 +19,7 @@ function HomeComponent() {
   return (
     <main className="flex items-center justify-center min-h-screen">
       <div className="w-fit flex flex-col gap-3 items-center">
-        <h1>Board page</h1>
+        <h1 className="text-3xl mb-10">Board page</h1>
 
         {isSuccess && (
           <BoardList

@@ -1,25 +1,24 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { listService } from "../../../shared/services/list-service";
-import { boardKeys } from "../../../shared/keys/board";
 import { useBoardId } from "./use-board-id";
-import type { DeleteListPayload } from "../types/delete-list-payload";
+import { boardKeys } from "../../../shared/keys/board";
+import type { SwapListPayload } from "../types/swap-lists-payload";
 import { toast } from "react-toastify";
 
-export const useDeleteList = () => {
-  const { id: boardId } = useBoardId();
-
+export const useSwapLists = () => {
   const queryClient = useQueryClient();
+  const { id: boardId } = useBoardId();
   return useMutation({
-    mutationFn: ({ listId }: DeleteListPayload) =>
-      listService.deleteList({ listId, boardId }),
+    mutationFn: (payload: SwapListPayload) =>
+      listService.swapLists({ boardId, payload }),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: boardKeys.detail(boardId).queryKey,
       });
-      toast.success("List deleted");
+      toast.success("Swapping success");
     },
     onError: () => {
-      toast.error("List not deleted");
+      toast.error("Error at swap");
     },
   });
 };

@@ -115,7 +115,6 @@ const Content = ({
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-    
   }, [isOpen, setIsOpen, triggerRef]);
 
   if (!isOpen) return null;
@@ -128,7 +127,26 @@ const Content = ({
   );
 };
 
+const Close = forwardRef<HTMLButtonElement, TriggerProps>(
+  ({ asChild, children, onClick, ...props }, ref) => {
+    const { setIsOpen } = useDialog();
+    const Comp = asChild ? Slot : "button";
+
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+      onClick?.(e);
+      setIsOpen(false);
+    };
+
+    return (
+      <Comp ref={ref} onClick={handleClick} {...props}>
+        {children}
+      </Comp>
+    );
+  },
+);
+
 export const Dialog = Object.assign(DialogRoot, {
   Trigger,
   Content,
+  Close,
 });

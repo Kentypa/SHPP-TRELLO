@@ -24,21 +24,33 @@ export const BoardFormModal: FC<{
         </h2>
         <label>Title</label>
         <input
+          required
           name="title"
           value={form.formState.title}
           onChange={form.handleChange}
           className="border-2 p-1 rounded-md"
         />
 
+        <label>Background Color</label>
+        <input
+          type="color"
+          name="background"
+          value={form.formState.custom?.background || "#ffffff"}
+          onChange={(e) => properties.updateByKey("background", e.target.value)}
+          className="w-full h-10 cursor-pointer"
+        />
+
         <ul className="flex flex-col gap-2">
-          {properties.fields.map((field) => (
-            <CustomPropertyItem
-              key={field.id}
-              field={field}
-              onUpdate={properties.update}
-              onRemove={properties.remove}
-            />
-          ))}
+          {properties.fields
+            .filter((field) => field.key !== "background")
+            .map((field) => (
+              <CustomPropertyItem
+                key={field.id}
+                field={field}
+                onUpdate={properties.update}
+                onRemove={properties.remove}
+              />
+            ))}
         </ul>
 
         <Button

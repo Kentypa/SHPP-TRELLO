@@ -8,6 +8,7 @@ import { boardKeys } from "../../../shared/keys/board";
 import { boardService } from "../../../shared/services/board-service";
 import { useCustomProperties } from "./use-custom-properties";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const useBoardForm = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -22,6 +23,10 @@ export const useBoardForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(boardKeys.all);
       handleClose();
+      toast.success("Success");
+    },
+    onError: (err) => {
+      toast.error(`Error: ${err}`);
     },
   });
 
@@ -31,9 +36,16 @@ export const useBoardForm = () => {
     handleSubmit,
     handleChangeByValue,
     handleSetFormState,
-  } = useForm<UpdateBoardPayload>({ title: "", custom: {} }, submitBoard);
+  } = useForm<UpdateBoardPayload>({ title: "", custom: {} }, (payload) => {
+    if (!payload?.title?.trim()) {
+      toast.error("Title should be empty");
+      return;
+    }
 
-  const { fields, add, remove, update, reset, setInitial } =
+    submitBoard(payload);
+  });
+
+  const { fields, add, remove, update, reset, setInitial, updateByKey } =
     useCustomProperties((customData) =>
       handleChangeByValue("custom", customData),
     );
@@ -63,7 +75,7 @@ export const useBoardForm = () => {
   return {
     modal: { showModal, open, close: handleClose },
     form: { formState, handleChange, handleSubmit },
-    properties: { fields, add, remove, update },
+    properties: { fields, add, remove, update, updateByKey },
     isEdit: !!activeId,
   };
 };

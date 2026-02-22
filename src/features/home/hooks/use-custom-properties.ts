@@ -60,5 +60,18 @@ export const useCustomProperties = (
 
   const reset = () => setFields([]);
 
-  return { fields, add, remove, update, reset, setInitial };
+  const updateByKey = (key: string, value: string) => {
+    const existing = fields.find((f) => f.key === key);
+    if (existing) {
+      update(existing.id, "value", value);
+    } else {
+      const id =
+        fields.length > 0 ? Math.max(...fields.map((f) => f.id)) + 1 : 0;
+      const updated = [...fields, { id, key, value }];
+      setFields(updated);
+      sync(updated);
+    }
+  };
+
+  return { fields, add, remove, update, updateByKey, reset, setInitial };
 };

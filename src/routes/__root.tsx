@@ -5,12 +5,12 @@ import {
   useNavigate,
 } from "@tanstack/react-router";
 import type { store } from "../store/store";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { Button } from "../shared/components/ui/Button";
 import { useLogout } from "../shared/hooks/use-logout";
 import { useSelector } from "react-redux";
 import { authSelector } from "../store/selectors/auth-selector";
 import { useMemo } from "react";
+import { ToastContainer } from "react-toastify";
 import MainPageIcon from "../assets/icons/apps.svg?react";
 import LoginIcon from "../assets/icons/enter.svg?react";
 import LogoutIcon from "../assets/icons/sign-out-alt.svg?react";
@@ -61,7 +61,7 @@ function RootComponent() {
         </Button>
       </header>
       <Outlet />
-      <TanStackRouterDevtools position="bottom-right" />
+      <ToastContainer position="bottom-right" theme="dark" />
     </>
   );
 }

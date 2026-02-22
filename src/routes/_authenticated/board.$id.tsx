@@ -18,7 +18,7 @@ function RouteComponent() {
       {isSuccess && (
         <>
           <div
-            className="flex p-6"
+            className="flex p-6 bg-neutral-200"
             style={{ background: boardData.custom?.background }}
           >
             <h2>Board title: {boardData.title}</h2>
@@ -27,6 +27,7 @@ function RouteComponent() {
             <List lists={boardData.lists}>
               <List.Items />
               <List.Creator />
+              <List.CardModal />
             </List>
           </main>
         </>
