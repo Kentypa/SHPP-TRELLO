@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import type { useGetBoards } from "../../hooks/use-get-boards";
-import { Board } from "../Board";
 import type { BoardData } from "../../types/board-data";
+import { Board } from "../Board";
 
 type BoardListProps = NonNullable<ReturnType<typeof useGetBoards>["data"]>;
 

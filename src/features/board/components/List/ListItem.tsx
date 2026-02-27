@@ -1,11 +1,11 @@
 import { type FC } from "react";
-import type { GetListResponse } from "../../types/get-list-response";
 import { useDeleteList } from "../../hooks/use-delete-list";
 import { useEditList } from "../../hooks/use-edit-list";
-import { ListTitle } from "./ListTitle";
-import { ListActions } from "./ListActions";
+import type { GetListResponse } from "../../types/get-list-response";
 import { Card } from "../Card";
+import { ListActions } from "./ListActions";
 import { useListContext } from "./ListContext";
+import { ListTitle } from "./ListTitle";
 
 export const ListItem: FC<GetListResponse> = ({
   cards,

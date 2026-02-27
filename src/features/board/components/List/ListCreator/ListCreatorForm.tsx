@@ -1,8 +1,8 @@
 import { useMemo, type FC } from "react";
+import CrossIcon from "../../../../../assets/icons/cross.svg?react";
 import { Button } from "../../../../../shared/components/ui/Button";
 import { useForm } from "../../../../../shared/hooks/use-forms";
 import type { AddListPayload } from "../../../types/add-list-payload";
-import CrossIcon from "../../../../../assets/icons/cross.svg?react";
 
 type ListCreatorFormProps = {
   position: number;

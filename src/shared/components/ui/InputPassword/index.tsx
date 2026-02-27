@@ -1,7 +1,7 @@
 import { useState, type FC, type InputHTMLAttributes } from "react";
-import { Button } from "../Button";
-import Eye from "../../../../assets/icons/eye.svg?react";
 import EyeClosed from "../../../../assets/icons/eye-crossed.svg?react";
+import Eye from "../../../../assets/icons/eye.svg?react";
+import { Button } from "../Button";
 
 type InputPasswordProps = InputHTMLAttributes<HTMLInputElement> & {
   iconClassName: string;

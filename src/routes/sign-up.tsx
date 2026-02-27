@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Button } from "../shared/components/ui/Button";
 import { useSignUp } from "../features/sign-up/hooks/use-sign-up";
+import { Button } from "../shared/components/ui/Button";
 import { InputPassword } from "../shared/components/ui/InputPassword";
 
 export const Route = createFileRoute("/sign-up")({

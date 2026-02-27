@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Button } from "../../shared/components/ui/Button";
 import { BoardFormModal } from "../../features/home/components/BoardFormModal";
+import { BoardList } from "../../features/home/components/BoardList";
 import { useBoardForm } from "../../features/home/hooks/use-board-form";
 import { useGetBoards } from "../../features/home/hooks/use-get-boards";
-import { BoardList } from "../../features/home/components/BoardList";
+import { Button } from "../../shared/components/ui/Button";
 
 export const Route = createFileRoute("/_authenticated/")({
   component: HomeComponent,

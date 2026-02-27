@@ -1,7 +1,7 @@
 import type { FC } from "react";
-import type { useBoardForm } from "../../hooks/use-board-form";
 import { Modal } from "../../../../shared/components/dialog/Modal";
 import { Button } from "../../../../shared/components/ui/Button";
+import type { useBoardForm } from "../../hooks/use-board-form";
 import { CustomPropertyItem } from "../CustomPropertyItem";
 
 export const BoardFormModal: FC<{

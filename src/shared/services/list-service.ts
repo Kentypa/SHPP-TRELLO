@@ -1,10 +1,10 @@
 import instance from "../../api/request";
 import type { AddListPayload } from "../../features/board/types/add-list-payload";
 import type { DeleteListPayload } from "../../features/board/types/delete-list-payload";
-import type { UpdateListPayload } from "../../features/board/types/update-list-payload";
-import type { ResultResponse } from "../types/result-response";
-import type { BoardId } from "../types/board-id";
 import type { SwapListPayload } from "../../features/board/types/swap-lists-payload";
+import type { UpdateListPayload } from "../../features/board/types/update-list-payload";
+import type { BoardId } from "../types/board-id";
+import type { ResultResponse } from "../types/result-response";
 
 type CreateListParams = AddListPayload & BoardId;
 type DeleteListParams = DeleteListPayload & BoardId;

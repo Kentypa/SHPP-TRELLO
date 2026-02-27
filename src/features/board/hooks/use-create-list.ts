@@ -1,11 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
+import { toast } from "react-toastify";
 import { boardKeys } from "../../../shared/keys/board";
 import { listService } from "../../../shared/services/list-service";
-import { toast } from "react-toastify";
 
 export const useCreateList = () => {
   const { id } = useParams({ from: "/_authenticated/board/$id" });
+
   const queryClient = useQueryClient();
 
   return useMutation({

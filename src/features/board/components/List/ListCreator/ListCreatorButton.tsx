@@ -1,12 +1,12 @@
 import type { FC } from "react";
-import { Button } from "../../../../../shared/components/ui/Button";
 import PlusIcon from "../../../../../assets/icons/plus.svg?react";
+import { Button } from "../../../../../shared/components/ui/Button";
 
-type ListCreatorButttonProps = {
+type ListCreatorButtonProps = {
   onClick: () => void;
 };
 
-export const ListCreatorButton: FC<ListCreatorButttonProps> = ({ onClick }) => {
+export const ListCreatorButton: FC<ListCreatorButtonProps> = ({ onClick }) => {
   return (
     <Button
       onClick={onClick}

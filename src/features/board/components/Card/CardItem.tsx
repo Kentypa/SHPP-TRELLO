@@ -1,12 +1,12 @@
-import type { FC, DragEvent, SyntheticEvent } from "react";
-import type { GetCardResponse } from "../../types/get-card-response";
-import { Button } from "../../../../shared/components/ui/Button";
+import type { DragEvent, FC, SyntheticEvent } from "react";
+import EditIcon from "../../../../assets/icons/pencil.svg?react";
 import { Dialog } from "../../../../shared/components/dialog/Dialog";
+import { Button } from "../../../../shared/components/ui/Button";
 import { useDeleteCard } from "../../hooks/use-delete-card";
 import { useEditCard } from "../../hooks/use-edit-card";
-import { useCardContext } from "./CardContext";
+import type { GetCardResponse } from "../../types/get-card-response";
 import { useListContext } from "../List/ListContext";
-import EditIcon from "../../../../assets/icons/pencil.svg?react";
+import { useCardContext } from "./CardContext";
 
 export const CardItem: FC<GetCardResponse> = (props) => {
   const { id, position, title, color } = props;

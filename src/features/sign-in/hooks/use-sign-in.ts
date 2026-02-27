@@ -1,12 +1,12 @@
-import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
-import { useForm } from "../../../shared/hooks/use-forms";
-import { authService } from "../../../shared/services/auth-service";
-import { authorizationKeys } from "../../../shared/keys/authorization";
 import { useDispatch } from "react-redux";
-import { login } from "../../../store/slices/authorization-slice";
-import { Route } from "../../../routes/sign-in";
 import { toast } from "react-toastify";
+import { Route } from "../../../routes/sign-in";
+import { useForm } from "../../../shared/hooks/use-forms";
+import { authorizationKeys } from "../../../shared/keys/authorization";
+import { authService } from "../../../shared/services/auth-service";
+import { login } from "../../../store/slices/authorization-slice";
 
 export const useSignIn = () => {
   const { redirect: redirectUrl } = Route.useSearch();

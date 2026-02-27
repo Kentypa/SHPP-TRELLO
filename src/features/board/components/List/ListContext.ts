@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
-import type { GetBoardDetailsResponse } from "../../types/get-board-details-response";
 import type { useCardDrag } from "../../hooks/use-card-drag";
-import type { useListDrag } from "../../hooks/use-list-drag";
 import type { useCardModalRoot } from "../../hooks/use-card-modal-root";
+import type { useListDrag } from "../../hooks/use-list-drag";
+import type { GetBoardDetailsResponse } from "../../types/get-board-details-response";
 
 export type ListType = GetBoardDetailsResponse["lists"][number];
 

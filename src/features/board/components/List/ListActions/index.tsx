@@ -1,7 +1,7 @@
 import type { FC } from "react";
+import Menu from "../../../../../assets/icons/dots-row.svg?react";
 import { Dialog } from "../../../../../shared/components/dialog/Dialog";
 import { Button } from "../../../../../shared/components/ui/Button";
-import Menu from "../../../../../assets/icons/dots-row.svg?react";
 
 type ListActionsProps = {
   handleDelete: () => void;

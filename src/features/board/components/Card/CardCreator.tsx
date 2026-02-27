@@ -1,12 +1,12 @@
 import { type FC } from "react";
+import CloseIcon from "../../../../assets/icons/cross.svg?react";
+import PlusIcon from "../../../../assets/icons/plus.svg?react";
 import { Button } from "../../../../shared/components/ui/Button";
 import { useCreateCard } from "../../hooks/use-create-card";
-import PlusIcon from "../../../../assets/icons/plus.svg?react";
-import CloseIcon from "../../../../assets/icons/cross.svg?react";
 import { useCardContext } from "./CardContext";
 
 export const CardCreator: FC = () => {
-  const {cards} = useCardContext()
+  const { cards } = useCardContext();
   const { isEditing, handleSubmit, handleChange, formState, toggleEditing } =
     useCreateCard(cards);
 

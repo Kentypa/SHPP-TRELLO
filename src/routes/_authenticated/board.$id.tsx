@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useBoardDetails } from "../../features/board/hooks/use-board-details";
 import { List } from "../../features/board/components/List";
+import { useBoardDetails } from "../../features/board/hooks/use-board-details";
 
 export const Route = createFileRoute("/_authenticated/board/$id")({
   component: RouteComponent,

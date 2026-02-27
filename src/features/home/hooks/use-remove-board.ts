@@ -1,7 +1,7 @@
-import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 import { boardKeys } from "../../../shared/keys/board";
 import { boardService } from "../../../shared/services/board-service";
-import { toast } from "react-toastify";
 
 export const useRemoveBoard = () => {
   const queryClient = useQueryClient();

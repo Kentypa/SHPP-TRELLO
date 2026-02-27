@@ -1,14 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { listService } from "../../../shared/services/list-service";
-import { boardKeys } from "../../../shared/keys/board";
-import { useBoardId } from "./use-board-id";
-import type { DeleteListPayload } from "../types/delete-list-payload";
 import { toast } from "react-toastify";
+import { boardKeys } from "../../../shared/keys/board";
+import { listService } from "../../../shared/services/list-service";
+import type { DeleteListPayload } from "../types/delete-list-payload";
+import { useBoardId } from "./use-board-id";
 
 export const useDeleteList = () => {
   const { id: boardId } = useBoardId();
 
   const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: ({ listId }: DeleteListPayload) =>
       listService.deleteList({ listId, boardId }),

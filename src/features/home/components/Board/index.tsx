@@ -1,9 +1,9 @@
+import { Link } from "@tanstack/react-router";
 import type { FC, MouseEvent } from "react";
-import type { BoardData } from "../../types/board-data";
+import MenuIcon from "../../../../assets/icons/dots-row.svg?react";
 import { Button } from "../../../../shared/components/ui/Button";
 import { useRemoveBoard } from "../../hooks/use-remove-board";
-import { Link } from "@tanstack/react-router";
-import MenuIcon from "../../../../assets/icons/dots-row.svg?react";
+import type { BoardData } from "../../types/board-data";
 
 export const Board: FC<BoardData & { onEdit: () => void }> = ({
   id,

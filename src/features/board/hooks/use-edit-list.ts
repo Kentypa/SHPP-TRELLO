@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useForm } from "../../../shared/hooks/use-forms";
-import { useUpdateList } from "./use-update-list";
 import type { UpdateListPayload } from "../types/update-list-payload";
+import { useUpdateList } from "./use-update-list";
 
-type EditListPayload = Omit<UpdateListPayload, "listid">;
-
-export const useEditList = ({ listId, title, position }: EditListPayload) => {
+export const useEditList = ({ listId, title, position }: UpdateListPayload) => {
   const { mutate: updateList } = useUpdateList();
+
   const [isEditing, setIsEditing] = useState(false);
 
-  const formProps = useForm<EditListPayload>(
+  const formProps = useForm<UpdateListPayload>(
     { listId, position, title },
     (data) => {
       updateList(data, { onSuccess: () => setIsEditing(false) });

@@ -1,4 +1,4 @@
-import type { HTMLAttributes, CSSProperties, SyntheticEvent } from "react";
+import type { CSSProperties, HTMLAttributes, SyntheticEvent } from "react";
 import { cx } from "./slot-utils";
 
 type PropValue =

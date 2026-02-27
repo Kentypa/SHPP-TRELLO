@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
+import { toast } from "react-toastify";
 import { useForm } from "../../../shared/hooks/use-forms";
 import { authService } from "../../../shared/services/auth-service";
-import { toast } from "react-toastify";
 
 export const useSignUp = () => {
   const INITIAL_STATE = { email: "", password: "" };

@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
-import { useNavigate } from "@tanstack/react-router";
-import { logout } from "../../store/slices/authorization-slice";
 import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/slices/authorization-slice";
 
 export const useLogout = () => {
   const dispatch = useDispatch();

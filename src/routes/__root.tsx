@@ -4,16 +4,16 @@ import {
   Outlet,
   useNavigate,
 } from "@tanstack/react-router";
-import type { store } from "../store/store";
-import { Button } from "../shared/components/ui/Button";
-import { useLogout } from "../shared/hooks/use-logout";
-import { useSelector } from "react-redux";
-import { authSelector } from "../store/selectors/auth-selector";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import MainPageIcon from "../assets/icons/apps.svg?react";
 import LoginIcon from "../assets/icons/enter.svg?react";
 import LogoutIcon from "../assets/icons/sign-out-alt.svg?react";
+import { Button } from "../shared/components/ui/Button";
+import { useLogout } from "../shared/hooks/use-logout";
+import { authSelector } from "../store/selectors/auth-selector";
+import type { store } from "../store/store";
 
 interface MyRouterContext {
   store: typeof store;

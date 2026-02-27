@@ -1,11 +1,11 @@
-import "./styles.css";
-import ReactDOM from "react-dom/client";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
-import { routeTree } from "./routeTree.gen";
-import { StrictMode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { routeTree } from "./routeTree.gen";
 import { store } from "./store/store";
+import "./styles.css";
 
 const router = createRouter({
   routeTree,

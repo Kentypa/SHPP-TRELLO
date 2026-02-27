@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import type { CustomField } from "../../types/custom-field";
 import { Button } from "../../../../shared/components/ui/Button";
+import type { CustomField } from "../../types/custom-field";
 
 type CustomPropertyItemProps = {
   onRemove: (id: number) => void;

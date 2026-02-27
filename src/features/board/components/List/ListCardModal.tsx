@@ -1,7 +1,7 @@
-import type { FC, ChangeEvent } from "react";
-import { useListContext } from "./ListContext";
+import type { ChangeEvent, FC } from "react";
 import { Modal } from "../../../../shared/components/dialog/Modal";
 import { useUpdateCard } from "../../hooks/use-update-card";
+import { useListContext } from "./ListContext";
 
 export const ListCardModal: FC = () => {
   const { cardModal } = useListContext();

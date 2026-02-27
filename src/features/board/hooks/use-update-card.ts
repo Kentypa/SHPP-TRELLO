@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useBoardId } from "./use-board-id";
-import { cardService } from "../../../shared/services/card-service";
-import { boardKeys } from "../../../shared/keys/board";
-import type { UpdateCardPayload } from "../types/update-card-payload";
 import { toast } from "react-toastify";
+import { boardKeys } from "../../../shared/keys/board";
+import { cardService } from "../../../shared/services/card-service";
+import type { UpdateCardPayload } from "../types/update-card-payload";
+import { useBoardId } from "./use-board-id";
 
 export const useUpdateCard = () => {
   const queryClient = useQueryClient();
+
   const { id: boardId } = useBoardId();
 
   return useMutation({
